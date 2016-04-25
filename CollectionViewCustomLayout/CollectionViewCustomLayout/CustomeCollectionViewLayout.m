@@ -43,6 +43,7 @@
 //记录每列Cell的最新Cell的Y坐标
 @property (strong, nonatomic) NSMutableArray *cellYArray;
 
+
 @end
 
 @implementation CustomeCollectionViewLayout
@@ -176,11 +177,14 @@
  * 初始化每列Cell的Y轴坐标
  */
 - (void) initCellYArray{
-    _cellYArray = [[NSMutableArray alloc] initWithCapacity:_columnCount];
-    
-    for (int i = 0; i < _columnCount; i ++) {
-        [_cellYArray addObject:@(0)];
+    if (_cellYArray == nil) {
+        _cellYArray = [[NSMutableArray alloc] initWithCapacity:_columnCount];
+        
     }
+    for (int i = 0; i < _columnCount; i ++) {
+        _cellYArray[i] = @(0);
+    }
+
 }
 
 
